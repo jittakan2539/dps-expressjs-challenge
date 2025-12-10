@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum TournamentStatus {
+  planning
+  started
+  finished
+}
+
+model Tournament {
+  id           Int                @id @default(autoincrement())
+  name         String?
+  createdAt    DateTime           @default(now())
+  status       TournamentStatus   @default(planning)
+
+  participants Participant[]
+  games        Game[]
+}
+
+model Participant {
+  id                  Int                   @id @default(autoincrement())
+  name                String
+  tournament          Tournament            @relation(fields: [tournamentId], references: [id])
+  tournamentId        Int
+
+  wins                Int                   @default(0)
+  draws               Int                   @default(0)
+  losses              Int                   @default(0)
+
+  gameParticipants    GameParticipant[]
+}
+
+model Game {
+  id                    Int               @id @default(autoincrement())
+  tournament            Tournament        @relation(fields: [tournamentId], references: [id])
+  tournamentId          Int
+  createdAt             DateTime          @default(now())
+
+  result                GameResult?       
+  gameParticipants      GameParticipant[]
+}
+
+model GameParticipant {
+  id                    Int         @id @default(autoincrement())
+  game                  Game        @relation(fields: [gameId], references: [id])
+  gameId                Int
+  participant           Participant @relation(fields: [participantId], references: [id])
+  participantId         Int
+
+  @@unique([gameId, participantId])
+}
+
+model GameResult {
+  id        Int       @id @default(autoincrement())
+  game      Game      @relation(fields: [gameId], references: [id])
+  gameId    Int       @unique
+  winnerId  Int?      // null if draw
+  isDraw    Boolean   @default(false)
+}

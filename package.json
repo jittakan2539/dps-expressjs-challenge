@@ -2,8 +2,12 @@
   "name": "dps-expressjs-challenge",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "dev": "tsx watch index.ts",
+    "start": "tsx index.ts"
   },
   "repository": {
     "type": "git",
@@ -16,10 +20,19 @@
   },
   "homepage": "https://github.com/jittakan2539/dps-expressjs-challenge#readme",
   "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.1.0",
+    "@prisma/client": "^7.1.0",
+    "dotenv": "^17.2.3",
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.2",
+    "nodemon": "^3.1.11",
+    "prisma": "^7.1.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
   "keywords": [],
   "description": ""
