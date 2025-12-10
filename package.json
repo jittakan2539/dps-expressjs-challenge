@@ -1,0 +1,26 @@
+{
+  "name": "dps-expressjs-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jittakan2539/dps-expressjs-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jittakan2539/dps-expressjs-challenge/issues"
+  },
+  "homepage": "https://github.com/jittakan2539/dps-expressjs-challenge#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "keywords": [],
+  "description": ""
+}
